@@ -1,0 +1,57 @@
+/* Util Classes */
+.card {
+    box-shadow: 0 0 3px darkgray;
+}
+.card-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+.card-text {
+    font-size: 1rem;
+}
+
+/* Antd Override */
+.ant-form-item {
+    margin: 10px;
+}
+
+/* Pages */
+/* Authentication */
+
+.authentication {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://img.freepik.com/free-photo/blue-abstract-gradient-wave-wallpaper_53876-108364.jpg?w=1380&t=st=1674733762~exp=1674734362~hmac=14ea2653db389bf80a948d43717bf835cc89eeeb8e8b2e288b9ad2535b196688');
+    background-size: cover;
+}
+
+.authentication-form {
+    width: 680px;
+}
+
+.authentication-form button {
+    display: block;
+    width: 100%;
+}
+
+@media only screen and (min-width: 320px) {
+    .authentication-form {
+        width: 300px;
+    }
+}
+
+@media only screen and (min-width: 540px) {
+    .authentication-form {
+        width: 380px;
+    }
+}
+
+@media only screen and (min-width: 780px) {
+    .authentication-form {
+        width: 500px;
+    }
+}
