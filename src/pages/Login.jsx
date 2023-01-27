@@ -1,14 +1,27 @@
 import '../styles.css'
 import { Button, Form, Input } from 'antd'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { loginUserService } from '../services/userService'
+import { toast } from 'react-hot-toast'
+
 
 const Login = () => {
-    const onFinish = (values) => {
-        console.log('Success:', values)
+    const navigate = useNavigate();
+    const onFinish = async (values) => {
+        try {
+            const response = await loginUserService(values);
+            toast.success("Login Successful :)")
+            localStorage.setItem('token', response.data.token);
+            // navigate('/register');
+        } catch (error) {
+            toast.error(error.response.data.message);
+        }
     }
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo)
     }
+
+
 
     return (
         <div className="authentication">

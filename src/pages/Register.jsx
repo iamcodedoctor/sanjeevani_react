@@ -1,13 +1,23 @@
 import '../styles.css'
 import { Button, Form, Input } from 'antd'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { registerUserService } from '../services/userService'
+import { toast } from 'react-hot-toast'
 
 const Register = () => {
-    const onFinish = (values) => {
+    const navigate = useNavigate()
+    const onFinish = async (values) => {
         if (values.password === values.confirmPassword) {
-            console.log('Success:', values)
+            try {
+                const response = await registerUserService(values)
+                toast.success(response.message)
+                toast.success('Redirecting to Login Page')
+                navigate('/login')
+            } catch (error) {
+                toast.error(error.response.data.message)
+            }
         } else {
-            console.log('Failed:', 'passwords dont match')
+            toast.error('Passwords do not match')
         }
     }
     const onFinishFailed = (errorInfo) => {
