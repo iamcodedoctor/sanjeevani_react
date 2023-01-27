@@ -55,3 +55,24 @@
         width: 500px;
     }
 }
+
+/* Layout  */
+.layout-logo {
+    height: 32px;
+    margin: 16px;
+    
+}
+
+.layout-logo h3 {
+    color: white;
+}
+
+.loading-parent {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: rgba(245, 245, 245, 0.5);
+}
