@@ -1,6 +1,6 @@
 import './styles.css'
 import { Toaster } from 'react-hot-toast'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
 import { Spin } from 'antd'
 import Home from './pages/Home'
 import Login from './pages/Login'
@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux'
 import ProtectedRoute from './components/ProtectedRoute'
 import PublicRoute from './components/PublicRoute'
 import LayoutContainer from './components/LayoutContainer'
+import Logout from './components/Logout'
 
 function App() {
     const { loading } = useSelector((state) => state.loader)
@@ -23,30 +24,33 @@ function App() {
             <Toaster position="top-center" reverseOrder={false} />
             <Routes>
                 <Route
-                    path="/register"
                     element={
                         <PublicRoute>
-                            <Register />
+                            <Outlet />
                         </PublicRoute>
                     }
-                />
+                >
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/login" element={<Login />} />
+                </Route>
                 <Route
-                    path="/login"
                     element={
-                        <PublicRoute>
-                            <Login />
-                        </PublicRoute>
+                        <LayoutContainer>
+                            <Outlet />
+                        </LayoutContainer>
                     }
-                />
-
-                <Route
-                    path="/"
-                    element={
-                        <ProtectedRoute>
-                            <Home />
-                        </ProtectedRoute>
-                    }
-                />
+                >
+                    <Route
+                        element={
+                            <ProtectedRoute>
+                                <Outlet />
+                            </ProtectedRoute>
+                        }
+                    >
+                        <Route path="/" element={<Home />} />
+                        <Route path="/logout" element={<Logout />} />
+                    </Route>
+                </Route>
             </Routes>
         </BrowserRouter>
     )

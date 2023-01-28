@@ -66,6 +66,18 @@
 .layout-logo h3 {
     color: white;
 }
+.logo-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.layout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
 
 .loading-parent {
     width: 100vw;

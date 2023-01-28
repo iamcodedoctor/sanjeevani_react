@@ -16,9 +16,11 @@ const Login = () => {
             const response = await loginUserService(values)
             dispatch(deactivateLoader())
             toast.success('Login Successful :)')
+            localStorage.clear();
             localStorage.setItem('token', response.token)
             navigate('/home')
         } catch (error) {
+            localStorage.clear();
             dispatch(activateLoder())
             toast.error(error.response.data.message)
         }

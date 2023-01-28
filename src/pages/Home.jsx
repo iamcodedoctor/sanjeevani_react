@@ -1,23 +1,21 @@
+import { activateLoder, deactivateLoader } from '../redux/loadingSlice'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import LayoutContainer from '../components/LayoutContainer';
-import { loadUser } from '../redux/authSlice';
-import { activateLoder, deactivateLoader } from '../redux/loadingSlice';
-
 import { loadUserService } from '../services/userService'
-
+import { loadUser } from '../redux/authSlice'
 const Home = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
     const loadUserInfo = async () => {
         try {
-            dispatch(activateLoder());
-            const response = await loadUserService()
-            dispatch(loadUser({...response.data}))
-            dispatch(deactivateLoader());
-            const user = response.data
-            console.log(response.data)
+            dispatch(activateLoder())
+            if(localStorage.getItem('token') !== null) {
+                const response = await loadUserService()
+                dispatch(loadUser({ ...response.data }))
+                dispatch(deactivateLoader())
+                console.log(response.data)
+            }
         } catch (error) {
-            dispatch(deactivateLoader());
+            dispatch(deactivateLoader())
             console.log(error)
         }
     }
@@ -25,13 +23,7 @@ const Home = () => {
     useEffect(() => {
         loadUserInfo()
     }, [])
-    return (
-        <LayoutContainer>
-            <h1>
-                Homepage
-            </h1>
-        </LayoutContainer>
-    )
+    return <h1>Homepage</h1>
 }
 
 export default Home
