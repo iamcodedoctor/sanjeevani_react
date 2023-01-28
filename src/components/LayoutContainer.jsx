@@ -1,9 +1,5 @@
 import '../styles.css'
 import {
-    UploadOutlined,
-    UserOutlined,
-    VideoCameraOutlined,
-    NotificationOutlined,
     HeartOutlined,
 } from '@ant-design/icons'
 import {
