@@ -10,6 +10,9 @@ import ProtectedRoute from './components/ProtectedRoute'
 import PublicRoute from './components/PublicRoute'
 import LayoutContainer from './components/LayoutContainer'
 import Logout from './components/Logout'
+import ApplyForDoctor from './pages/ApplyForDoctor'
+import AdminProtetedRoute from './components/AdminProtectedRoute'
+import Users from './pages/Users'
 
 function App() {
     const { loading } = useSelector((state) => state.loader)
@@ -49,6 +52,19 @@ function App() {
                     >
                         <Route path="/" element={<Home />} />
                         <Route path="/logout" element={<Logout />} />
+                        <Route
+                            path="/applyForDoctor"
+                            element={<ApplyForDoctor />}
+                        />
+                        <Route
+                            element={
+                                <AdminProtetedRoute>
+                                    <Outlet />
+                                </AdminProtetedRoute>
+                            }
+                        >
+                            <Route path="/users" element={<Users />} />
+                        </Route>
                     </Route>
                 </Route>
             </Routes>

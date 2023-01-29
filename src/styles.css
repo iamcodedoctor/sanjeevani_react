@@ -17,6 +17,10 @@
     margin: 10px;
 }
 
+.ant-input-disabled:disabled  {
+    color: black;
+}
+
 /* Pages */
 /* Authentication */
 

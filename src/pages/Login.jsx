@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { activateLoder, deactivateLoader } from '../redux/loadingSlice'
 
 const Login = () => {
-    const { laoding } = useSelector((state) => state.loader)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const onFinish = async (values) => {
@@ -16,11 +15,11 @@ const Login = () => {
             const response = await loginUserService(values)
             dispatch(deactivateLoader())
             toast.success('Login Successful :)')
-            localStorage.clear();
+            localStorage.clear()
             localStorage.setItem('token', response.token)
-            navigate('/home')
+            navigate('/')
         } catch (error) {
-            localStorage.clear();
+            localStorage.clear()
             dispatch(activateLoder())
             toast.error(error.response.data.message)
         }

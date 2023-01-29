@@ -39,4 +39,15 @@ const loadUserService = () => {
     })
 }
 
-export { registerUserService, loginUserService, loadUserService }
+const applyForDoctorService = (values) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response = await makeRequestWithToken.post('/user/applyForDoctor', values);
+            return resolve(response.data);
+        } catch (error) {
+            return reject(error);
+        }
+    })
+}
+
+export { registerUserService, loginUserService, loadUserService, applyForDoctorService }

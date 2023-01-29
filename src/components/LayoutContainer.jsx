@@ -39,6 +39,11 @@ const LayoutContainer = () => {
             icon: <RiHealthBookLine />,
         },
         {
+            label: 'Apply For Doctor',
+            key: '/applyForDoctor',
+            icon: <RiHealthBookLine />,
+        },
+        {
             label: 'Profile',
             key: '/profile',
             icon: <RiUserLine />,
@@ -162,6 +167,7 @@ const LayoutContainer = () => {
                 <Content
                     style={{
                         margin: '24px 16px 0',
+                        overflow:'auto'
                     }}
                 >
                     <div
@@ -179,7 +185,7 @@ const LayoutContainer = () => {
                         textAlign: 'center',
                     }}
                 >
-                    Ant Design ©2023 Created by Ant UED
+                    Sanjeevani ©2023  Created by Niraj Khare
                 </Footer>
             </Layout>
         </Layout>
