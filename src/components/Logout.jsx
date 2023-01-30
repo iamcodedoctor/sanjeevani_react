@@ -9,7 +9,7 @@ const Logout = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     useEffect(() => {
-        localStorage.clear();
+        window.localStorage.clear();
         dispatch(logoutUser());
         navigate('/login');
     }, [])

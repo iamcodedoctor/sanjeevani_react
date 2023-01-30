@@ -1,21 +1,14 @@
 import '../styles.css'
-import {
-    HeartOutlined,
-} from '@ant-design/icons'
+import { HeartOutlined } from '@ant-design/icons'
 import {
     RiHome8Line,
     RiNotification2Line,
     RiUserLine,
     RiLoginCircleLine,
     RiHealthBookLine,
-
 } from 'react-icons/ri'
-import {
-    FaUserMd
-} from 'react-icons/fa'
-import {
-    TbUsers
-} from 'react-icons/tb'
+import { FaUserMd } from 'react-icons/fa'
+import { TbUsers } from 'react-icons/tb'
 import { Layout, Menu, theme, Badge } from 'antd'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import React from 'react'
@@ -139,7 +132,13 @@ const LayoutContainer = () => {
                     onClick={({ key }) => {
                         navigate(key)
                     }}
-                    items={user?.role === 'admin' ? adminItems : user?.role === 'doctor' ? doctorItems : userItems}
+                    items={
+                        user?.role === 'admin'
+                            ? adminItems
+                            : user?.role === 'doctor'
+                            ? doctorItems
+                            : userItems
+                    }
                 ></Menu>
             </Sider>
             <Layout>
@@ -158,7 +157,9 @@ const LayoutContainer = () => {
                                 <RiNotification2Line
                                     style={{
                                         fontSize: '1.2rem',
+                                        cursor:'pointer'
                                     }}
+                                    onClick={() => navigate('/notifications')}
                                 />
                             </Badge>
                         </div>
@@ -167,7 +168,7 @@ const LayoutContainer = () => {
                 <Content
                     style={{
                         margin: '24px 16px 0',
-                        overflow:'auto'
+                        overflow: 'auto',
                     }}
                 >
                     <div
@@ -185,7 +186,7 @@ const LayoutContainer = () => {
                         textAlign: 'center',
                     }}
                 >
-                    Sanjeevani ©2023  Created by Niraj Khare
+                    Sanjeevani ©2023 Created by Niraj Khare
                 </Footer>
             </Layout>
         </Layout>

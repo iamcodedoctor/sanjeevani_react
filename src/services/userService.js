@@ -50,4 +50,34 @@ const applyForDoctorService = (values) => {
     })
 }
 
-export { registerUserService, loginUserService, loadUserService, applyForDoctorService }
+const unseenNotificationsService = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response = await axios.get(`${baseConfig.serverUrl}/user/unseenNotifications`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            });
+            return resolve(response.data);
+        } catch (error) {
+            return reject(error);
+        }
+    })
+}
+
+const seenNotificationsService = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response = await axios.get(`${baseConfig.serverUrl}/user/seenNotifications`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            });
+            return resolve(response.data);
+        } catch (error) {
+            return reject(error);
+        }
+    })
+}
+
+export { registerUserService, loginUserService, loadUserService, applyForDoctorService, unseenNotificationsService, seenNotificationsService }

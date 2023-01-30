@@ -14,6 +14,7 @@ import ApplyForDoctor from './pages/ApplyForDoctor'
 import AdminProtetedRoute from './components/AdminProtectedRoute'
 import Users from './pages/Users'
 import Unauthorised from './pages/Unauthorised'
+import Notifications from './pages/Notifications'
 
 function App() {
     const { loading } = useSelector((state) => state.loader)
@@ -56,6 +57,10 @@ function App() {
                         <Route
                             path="/applyForDoctor"
                             element={<ApplyForDoctor />}
+                        />
+                        <Route
+                            path="/notifications"
+                            element={<Notifications />}
                         />
                         <Route
                             element={

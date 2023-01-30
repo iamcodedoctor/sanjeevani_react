@@ -83,6 +83,14 @@
     padding-right: 2rem;
 }
 
+/* Notifications Page */
+.heading-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Loading Component */
 .loading-parent {
     width: 100vw;
     height: 100vh;
