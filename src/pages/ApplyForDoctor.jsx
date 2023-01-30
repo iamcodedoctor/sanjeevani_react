@@ -17,7 +17,7 @@ const ApplyForDoctor = () => {
             toast.success(response?.data?.message)
             navigate('/')
         } catch (error) {
-            dispatch(activateLoder())
+            dispatch(deactivateLoader())
             toast.error(error.response.data.message)
         }
         console.log(values)

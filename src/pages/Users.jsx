@@ -1,8 +1,39 @@
 import { Button, Space, Table } from 'antd'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { toast } from 'react-hot-toast'
 import { RiDeleteBin2Fill } from 'react-icons/ri'
+import { useDispatch } from 'react-redux'
+import { activateLoder, deactivateLoader } from '../redux/loadingSlice'
+import { listUsersService } from '../services/adminService'
 
 const Users = () => {
+    const [data, setData] = useState([])
+    const dispatch = useDispatch()
+    const handleDeleteUser = (id) => {
+        console.log(id)
+    }
+    const listUsers = async () => {
+        try {
+            dispatch(activateLoder())
+            const response = await listUsersService({})
+            let users = response.data.map((user) => {
+                return {
+                    ...user,
+                    key: user._id,
+                }
+            })
+            setData(users)
+            dispatch(deactivateLoader())
+        } catch (error) {
+            dispatch(deactivateLoader())
+            toast.error(error.response.data.message)
+        }
+    }
+
+    useEffect(() => {
+        listUsers()
+    }, [])
+
     const columns = [
         {
             title: 'Username',
@@ -25,25 +56,10 @@ const Users = () => {
             render: (_, record) => (
                 <Space size="middle">
                     <Button type="primary" danger>
-                        <RiDeleteBin2Fill style={{ fontSize: '1.2rem' }} />
+                        <RiDeleteBin2Fill style={{ fontSize: '1.2rem' }} onClick={(e)=> handleDeleteUser(record._id)}/>
                     </Button>
                 </Space>
             ),
-        },
-    ]
-
-    const data = [
-        {
-            key: 1,
-            username: 'John',
-            email: 'john@mail.com',
-            role: 'user',
-        },
-        {
-            key: 1,
-            username: 'Harry',
-            email: 'harry@mail.com',
-            role: 'user',
         },
     ]
 

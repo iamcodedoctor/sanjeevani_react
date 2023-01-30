@@ -20,7 +20,7 @@ const Login = () => {
             navigate('/')
         } catch (error) {
             localStorage.clear()
-            dispatch(activateLoder())
+            dispatch(deactivateLoader())
             toast.error(error.response.data.message)
         }
     }

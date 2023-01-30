@@ -13,6 +13,7 @@ import Logout from './components/Logout'
 import ApplyForDoctor from './pages/ApplyForDoctor'
 import AdminProtetedRoute from './components/AdminProtectedRoute'
 import Users from './pages/Users'
+import Unauthorised from './pages/Unauthorised'
 
 function App() {
     const { loading } = useSelector((state) => state.loader)
@@ -66,6 +67,7 @@ function App() {
                             <Route path="/users" element={<Users />} />
                         </Route>
                     </Route>
+                    <Route path="/unauthorised" element={<Unauthorised />} />
                 </Route>
             </Routes>
         </BrowserRouter>
